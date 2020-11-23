@@ -1,2 +1,2 @@
 # my-code
-some code written or recorded by myself
+some code was written or recorded by myself
