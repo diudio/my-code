@@ -1,10 +1,10 @@
 // 深拷贝，未解决循环依赖问题
-function deepClone1 (param) {
+function deepClone (param) {
     if (param && typeof param === 'object') {
         const objClone = Array.isArray(param) ? [] : {}
         for (let key in param) {
             if (param.hasOwnProperty(key)) {
-                objClone[key] = deepClone1(param[key])
+                objClone[key] = deepClone(param[key])
             }
         }
         return objClone
@@ -19,7 +19,7 @@ function deepClone1 (param) {
  * const obj = { name: 'zwj' }
  * obj.circle = obj
  */
-function deepClone2(objComplex, mapx = new Map()) {
+function deepClone(objComplex, mapx = new Map()) {
     if (!objComplex || typeof objComplex !== 'object') {
         return objComplex
     }
@@ -31,7 +31,7 @@ function deepClone2(objComplex, mapx = new Map()) {
     mapx.set(objComplex, objClone)
     for (let key in objComplex) {
         if (objComplex.hasOwnProperty(key)) {
-            objClone[key] = deepClone2(objComplex[key], mapx)
+            objClone[key] = deepClone(objComplex[key], mapx)
         }
     }
     return objClone
@@ -44,13 +44,13 @@ function deepClone2(objComplex, mapx = new Map()) {
 var objComplex = {
     name: 'woow_wu7',
     address: {
-      city: 'chongqing',
-      district: 'yubei',
-      town: 'jiazhou',
-      detail: ['chongqing', 'yubei', 'jiazhou']
+        city: 'chongqing',
+        district: 'yubei',
+        town: 'jiazhou',
+        detail: ['chongqing', 'yubei', 'jiazhou']
     },
     score: [100, 200]
 }
 
-var res = deepClone2(objComplex)
+var res = deepClone(objComplex)
 console.log(res, 'res')
