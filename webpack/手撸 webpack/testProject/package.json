@@ -1,0 +1,19 @@
+{
+  "name": "abc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "loader-utils": "^2.0.0",
+    "webpack": "^5.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "myBuild": "myWebpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
