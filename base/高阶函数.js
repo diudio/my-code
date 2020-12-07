@@ -78,7 +78,7 @@ compose([a, b, c])()
 
 
 
-// 柯里化的实现
+// 柯里化的实现1， 缺点：必须参数传够了才能执行
 function curry(func) {
     return function curried(...args) {
         if (args.length >= func.length) { // 通过函数的length属性，来获取函数的形参个数
@@ -90,6 +90,19 @@ function curry(func) {
         }
     }
 }
+// 科里化实现2，  缺点：必须手动执行
+function curry (fn) {
+    let args = []
+    function curried (...args2) {
+        args = [...args, ...args2]
+        return curried
+    }
+    curried.run = function () {
+        fn.apply(this, args)
+    }
+    return curried
+}
+
 
 // 偏函数的实现
 function partial(fn) {
